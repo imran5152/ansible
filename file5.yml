@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name:  install maven 
+      action: yum  name=maven  state=present
+       
+    - name: Install ansible
+      yum: name=ansible-core state=present
+
+    - name: Install Httpd
+      command: yum install httpd -y

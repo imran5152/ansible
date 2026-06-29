@@ -1,0 +1,19 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: folder create
+      file: path="/root/Music/demo1/" state=directory
+      tags: aarush
+    
+    - name: file1 create
+      file: path="/root/Music/file1" state=touch
+      tags: imran
+
+    - name: file2
+      file: path="/root/Music/file2" state=touch
+      tags: aarush
+
+    - name: file3
+      file: path="/root/Music/file3" state=touch

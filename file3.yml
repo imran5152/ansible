@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Creat a file
+      file:
+        path: "Demo.txt"
+        state: touch

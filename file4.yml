@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Creat a Folder
+      file: path="/folder1" state=directory

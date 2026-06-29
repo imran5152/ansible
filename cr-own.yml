@@ -1,0 +1,17 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+  - name: create a file with owner
+    user: name=renuka state=present
+
+  - name: Creat Group
+    group: name=vpcollege state=present
+
+  - name: Creat A file
+    file:
+      path: "/root/Desktop/sample1"
+      state: touch
+      owner: renuka
+      group: vpcollege

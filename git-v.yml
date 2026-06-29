@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+  - name: Getting Git Repo
+    git:
+      repo: https://github.com/imran5152/node2.git
+      dest: "/root/Desktop/project/"
+      version: "main"

@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  connection: ssh
+
+  vars:
+    mytool:
+  tasks:
+
+    - name: Install maven 
+      action: yum name={{mytool}} state=present

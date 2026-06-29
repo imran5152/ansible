@@ -1,0 +1,7 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Create A file
+      file: path="demo1/file1.pdf" state=touch

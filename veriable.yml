@@ -1,0 +1,18 @@
+---
+- hosts: dev
+  connection: ssh
+
+  vars:
+    pack1: maven
+    pack2: httpd
+    pack3: ansible-core
+
+  tasks:
+  - name: Install Maven
+    action: yum name={{pack1}} state=present
+
+  - name: Install httpd
+    yum: name={{pack2}}
+
+  - name: Install Ansible-core
+    command: yum install {{pack3}}

@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Create Multipe users
+      user: name={{item}} state=present
+      with_items:
+        - user4
+        - user5
+        - user6

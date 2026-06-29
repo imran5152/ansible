@@ -1,0 +1,6 @@
+---
+  - name: Install Web server on slave server
+    yum: name=httpd state=present
+
+  - name: Start service
+    service: name=httpd state=started

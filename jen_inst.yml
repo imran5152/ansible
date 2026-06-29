@@ -1,0 +1,19 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Get Jenkins Repo
+      command: wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/rpm-stable/jenkins.repo
+
+    - name: install Jenkins
+      yum: name=jenkins state=present
+
+    - name: replace config.xml
+      copy:
+        src: "config.xml"
+        dest: "/var/lib/jenkins"
+
+    - name: start jenkins service
+      service: name=jenkins state=started
+

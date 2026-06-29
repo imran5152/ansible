@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+   - name: create a directory
+     file:
+       name="demo1"
+       state=directory

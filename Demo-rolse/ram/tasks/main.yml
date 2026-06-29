@@ -1,0 +1,3 @@
+---
+  - name: Create A index.html
+    file: path="/var/www/html/index.html" state=touch

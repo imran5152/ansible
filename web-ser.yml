@@ -1,0 +1,12 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+  - name: install httpd on Redhat
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: install apche2 on ubuntu
+    apt: name=apche2 state=present
+    when: ansible_os_family == "Ubuntu"

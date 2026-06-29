@@ -1,0 +1,38 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Download Tomacat
+      get_url:
+        url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.115/bin/apache-tomcat-9.0.115.tar.gz"
+        dest: "/root"
+    
+
+    - name: Untar tomcat 
+      command: tar -xvf apache-tomcat-9.0.115.tar.gz
+
+    - name: Rename tomcat
+      command: mv apache-tomcat-9.0.115 tomcat
+
+    - name: Stop Tomcat
+      shell: nohup /root/tomcat/bin/shutdown.sh
+     
+    - name: copy context.xml
+      copy:
+          src: "context.xml"
+          dest: "/root/tomcat/webapps/manager/META.INF/"
+
+    - name: Copy tomcat.users.xml
+      copy:
+        src: "tomcat-users.xml"
+        dest: "/root/tomcat/conf/"
+    
+    - name: copy server.xml
+      copy:
+        src: "server.xml"
+        dest: "/root/tomcat/conf/"
+
+    - name: start tomcat
+      shell: nohup /root/tomcat/bin/startup.sh
+ 
