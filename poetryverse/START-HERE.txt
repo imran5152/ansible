@@ -1,0 +1,21 @@
+PoetryVerse: React + Tailwind + Node.js + MongoDB
+
+1. Node.js 24 install karo: https://nodejs.org/
+2. Is folder ko extract karo.
+3. Terminal mein isi folder se chalao:
+
+   npm ci
+   npm run dev
+
+4. Browser mein http://localhost:5173 kholo.
+5. Sign Up karo, phir Log In karke apni poems likho.
+
+Windows par scripts/start.bat double-click bhi kar sakte ho.
+Mac/Linux par bash scripts/start.sh chala sakte ho.
+
+Pehli baar MongoDB download hogi. Internet chahiye.
+Local data .local-data/mongodb mein rahega.
+Apna MongoDB Atlas use karna ho to README.md mein steps hain.
+Pehle se existing data is ZIP mein nahi hai.
+
+Baaki setup aur deployment ke liye README.md padho.
