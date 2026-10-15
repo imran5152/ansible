@@ -4,23 +4,29 @@ import { randomBytes } from 'node:crypto';
 import mongoose from 'mongoose';
 import MongoStore from 'connect-mongo';
 import request from 'supertest';
-import { MongoMemoryServer } from 'mongodb-memory-server';
 import bcrypt from 'bcryptjs';
 import { createApp } from '../server/app.js';
+import { connectDatabase, LOCAL_MONGODB_URI } from '../server/db.js';
 import { User, Poem } from '../server/models.js';
 
-let mongo, app, store;
+let app, store;
 const secret = randomBytes(32).toString('hex');
 const account = { name: 'Test Poet', email: 'poet@example.test', password: 'A synthetic password 42', confirmPassword: 'A synthetic password 42' };
 const createStore = () => MongoStore.create({ client: mongoose.connection.getClient(), collectionName: 'test_sessions' });
 before(async () => {
-  mongo = await MongoMemoryServer.create();
-  await mongoose.connect(mongo.getUri('poetryverse_test'));
+  assert.equal(LOCAL_MONGODB_URI, 'mongodb://127.0.0.1:27017/poetryverse');
+  await connectDatabase(process.env.MONGODB_TEST_URI || 'mongodb://127.0.0.1:27017', {
+    dbName: `poetryverse_test_${randomBytes(8).toString('hex')}`,
+  });
   await Promise.all([User.init(), Poem.init()]);
   store = createStore();
   app = createApp({ secret, store, serveClient: true });
 });
-after(async () => { await store?.close(); await mongoose.disconnect(); await mongo?.stop(); });
+after(async () => {
+  if (mongoose.connection.readyState === 1) await mongoose.connection.dropDatabase();
+  await store?.close();
+  await mongoose.disconnect();
+});
 async function session(agent = request.agent(app)) {
   const res = await agent.get('/api/auth/session').expect(200);
   return { agent, token: res.body.csrfToken, cookie: res.headers['set-cookie'][0].split(';')[0] };

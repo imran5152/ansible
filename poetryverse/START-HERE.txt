@@ -1,20 +1,25 @@
 PoetryVerse: React + Tailwind + Node.js + MongoDB
 
 1. Node.js 24 install karo: https://nodejs.org/
-2. Is folder ko extract karo.
-3. Terminal mein isi folder se chalao:
+2. MongoDB Community Server install/start rakho (Compass alone kaafi nahi hai).
+   https://www.mongodb.com/try/download/community
+3. Is folder ko extract karo.
+4. Terminal mein isi folder se chalao:
 
    npm ci
    npm run dev
 
-4. Browser mein http://localhost:5173 kholo.
-5. Sign Up karo, phir Log In karke apni poems likho.
+5. Browser mein http://localhost:5173 kholo.
+6. Sign Up karo, phir Log In karke apni poems likho.
 
 Windows par scripts/start.bat double-click bhi kar sakte ho.
 Mac/Linux par bash scripts/start.sh chala sakte ho.
 
-Pehli baar MongoDB download hogi. Internet chahiye.
-Local data .local-data/mongodb mein rahega.
+Database connection: server/db.js
+MongoDB URI: mongodb://127.0.0.1:27017/poetryverse
+Data users, poems aur sessions collections mein save hoga.
+Compass mein mongodb://127.0.0.1:27017 se connect karo.
+MongoDB service band ho to Administrator PowerShell: Start-Service MongoDB
 Apna MongoDB Atlas use karna ho to README.md mein steps hain.
 Pehle se existing data is ZIP mein nahi hai.
 
