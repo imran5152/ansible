@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: imran-portfolio
+    runtime: static
+    branch: coderabbit/zip-file-upload-instructions/54af5e2d
+    rootDir: portfolio
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist

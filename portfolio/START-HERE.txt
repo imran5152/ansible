@@ -1,0 +1,14 @@
+Imran Pathan — React Portfolio
+
+1. Node.js 24 install karo: https://nodejs.org/
+2. ZIP extract karo. Jis folder mein package.json hai usko kholo.
+3. Terminal mein pehle npm.cmd ci, phir npm.cmd run dev chalao.
+4. Browser mein http://localhost:5174 kholo.
+
+Windows par scripts/start.bat double-click bhi kar sakte ho.
+MongoDB ya backend ki zaroorat nahi hai.
+Contact form visitor ki email app kholta hai; khud email send nahi karta.
+
+Personal details: src/data.js
+Resumes: public/resumes/
+Baaki setup aur deployment: README.md
